@@ -1,0 +1,12 @@
+version: '3.8'
+
+services:
+  sast-engine:
+    build: .
+    container_name: securcode_sast_api
+    ports:
+      - "8000:8000"
+    restart: unless-stopped
+    # Siber Güvenlik Katmanı: İzin yükseltme (privilege escalation) saldırılarını engeller
+    security_opt:
+      - no-new-privileges:true
